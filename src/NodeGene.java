@@ -1,7 +1,7 @@
 package src;
 public class NodeGene {
 
-    private int id;
+    private int innovationNumber;
     private TYPE type;
 
     public TYPE getType() {
@@ -17,12 +17,12 @@ public class NodeGene {
         this.type = type;
     }
 
-    public NodeGene(int ID){
-        this.id = ID;
+    public NodeGene(int innovaitonNumber){
+        this.innovationNumber = innovaitonNumber;
     }
 
-    public int getID(){
-        return id;
+    public int getInnovationNumber(){
+        return innovationNumber;
     }
 
     public enum TYPE {

@@ -31,8 +31,8 @@ public class Genome {
         toSplit.setExpressed(false);
         NodeGene newNodeGene = network.generateNode();
         newNodeGene.setType(NodeGene.TYPE.HIDDEN_NODE);
-        ConnectionGene fromConnection = new ConnectionGene(toSplit.getInputNodeID(), newNodeGene.getID());
-        ConnectionGene toConnection = new ConnectionGene(newNodeGene.getID(), toSplit.getOutputNodeID());
+        ConnectionGene fromConnection = new ConnectionGene(toSplit.getInputNodeID(), newNodeGene.getInnovationNumber());
+        ConnectionGene toConnection = new ConnectionGene(newNodeGene.getInnovationNumber(), toSplit.getOutputNodeID());
         fromConnection.setExpressed(true);
         toConnection.setExpressed(true);
         fromConnection.setWeight(1);
