@@ -42,6 +42,11 @@ public class CustomHashSet<T> {
         return validIndex(index) ? array[index] : null;
     }
 
+    public T getRandomElement(){
+        if(size == 0) return null;
+        return array[(int)Math.random() *size];
+    }
+
     public int getIndex(T element){
         for (int i = 0; i < size; i++) {
             if(element.equals(array[i])){
