@@ -1,3 +1,4 @@
+package src;
 public class NodeGene {
 
     private int id;
