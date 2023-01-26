@@ -42,4 +42,9 @@ public class Genome {
         network.getConnectionDictionary()
                 .put(new int[] { toConnection.getInputNodeID(), toConnection.getOutputNodeID() }, toConnection);
     }
+
+    public void mutateConnectionToggle() {
+        ConnectionGene c = connections.getRandomElement();
+        c.setExpressed(c.isExpressed());
+    }
 }
