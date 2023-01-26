@@ -13,20 +13,33 @@ public class Genome {
     }
 
     /**
-     * Take two nodes that have not been connected and connect them, giving them a random weight.
+     * Take two nodes that have not been connected and connect them, giving them a
+     * random weight.
      */
-    public void mutateAddConnection(){
-        
+    public void mutateAddConnection() {
+
     }
 
     /**
-     * Take an existing connection and add a node in the middle.  Connect the original input to the new node with a weight of 1. Connect the new node to the original output with the same weight as the original connection.  Disables the original connection.
+     * Take an existing connection and add a node in the middle. Connect the
+     * original input to the new node with a weight of 1. Connect the new node to
+     * the original output with the same weight as the original connection. Disables
+     * the original connection.
      */
-    public void mutateAddNode(){
-        ConnectionGene toSplit = connections.getElement((int)Math.random() * connections.getSize());
+    public void mutateAddNode() {
+        ConnectionGene toSplit = connections.getRandomElement();
         toSplit.setExpressed(false);
         NodeGene newNodeGene = network.generateNode();
         newNodeGene.setType(NodeGene.TYPE.HIDDEN_NODE);
         ConnectionGene fromConnection = new ConnectionGene(toSplit.getInputNodeID(), newNodeGene.getID());
+        ConnectionGene toConnection = new ConnectionGene(newNodeGene.getID(), toSplit.getOutputNodeID());
+        fromConnection.setExpressed(true);
+        toConnection.setExpressed(true);
+        fromConnection.setWeight(1);
+        toConnection.setWeight(toSplit.getWeight());
+        network.getConnectionDictionary()
+                .put(new int[] { fromConnection.getInputNodeID(), fromConnection.getOutputNodeID() }, fromConnection);
+        network.getConnectionDictionary()
+                .put(new int[] { toConnection.getInputNodeID(), toConnection.getOutputNodeID() }, toConnection);
     }
 }
