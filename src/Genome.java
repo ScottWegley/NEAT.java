@@ -1,12 +1,10 @@
 package src;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+
+import src.utils.CustomHashSet;
 
 public class Genome {
-    Map<Integer, NodeGene> nodeGeneMap = new HashMap<Integer,NodeGene>();
-    Map<Integer, ConnectionGene> connectionGeneMap = new HashMap<Integer,ConnectionGene>();
-    Random r = new Random();
+    CustomHashSet<NodeGene> nodes = new CustomHashSet<NodeGene>();
+    CustomHashSet<ConnectionGene> connections = new CustomHashSet<ConnectionGene>();
 
     /**
      * Take two nodes that have not been connected and connect them, giving them a random weight.
