@@ -63,6 +63,10 @@ public class CustomHashSet<T> {
         return false;
     }
 
+    public void clear(){
+        array = (T[]) new Object[1];
+    }
+
     private boolean validIndex(int index){
         return (index >= 0 && index < size);
     }
