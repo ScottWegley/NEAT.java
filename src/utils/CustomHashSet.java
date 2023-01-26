@@ -17,6 +17,7 @@ public class CustomHashSet<T> {
     }
 
     public void remove(int index){
+        if(!validIndex(index)) return;
         for(int i = index; i < size -1; i++){
             array[i] = array[i + 1];
         }
@@ -28,7 +29,10 @@ public class CustomHashSet<T> {
     }
 
     public T get(int index){
-        return array[index];
+        return validIndex(index) ? array[index] : null;
     }
 
+    private boolean validIndex(int index){
+        return (index >= 0 && index < size);
+    }
 }
