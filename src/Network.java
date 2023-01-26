@@ -9,7 +9,7 @@ public class Network {
 
     public static final int MAX_NODES = (int) Math.pow(2, 10);
 
-    private HashMap<ConnectionGene, ConnectionGene> connectionDictionary = new HashMap<>();
+    private HashMap<int[], ConnectionGene> connectionDictionary = new HashMap<>();
     private ArrayList<NodeGene> nodeDictionary = new ArrayList<>();
 
     private int inputNodes, outputNodes, instanceLimit, instances;
@@ -37,7 +37,7 @@ public class Network {
         }
     }
 
-    public HashMap<ConnectionGene, ConnectionGene> getConnectionDictionary() {
+    public HashMap<int[], ConnectionGene> getConnectionDictionary() {
         return connectionDictionary;
     }
 
