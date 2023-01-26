@@ -24,12 +24,30 @@ public class CustomHashSet<T> {
         size--;
     }
 
+    public void remove(T element){
+        for (int i = 0; i < size; i++){
+            if(element.equals(array[i])){
+                remove(i);
+                return;
+            }
+        }
+    }
+
     public int getSize() {
         return size;
     }
 
-    public T get(int index){
+    public T getElement(int index){
         return validIndex(index) ? array[index] : null;
+    }
+
+    public int getIndex(T element){
+        for (int i = 0; i < size; i++) {
+            if(element.equals(array[i])){
+                return i;
+            }
+        }
+        return -1;
     }
 
     private boolean validIndex(int index){
