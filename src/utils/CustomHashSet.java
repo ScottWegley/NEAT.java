@@ -5,6 +5,7 @@ public class CustomHashSet<T> {
 
     private int size = 0;
     public void add(T element){
+        if(contains(element)) return;
         array[size] = element;
         size++;
         if(size == array.length){
@@ -48,6 +49,13 @@ public class CustomHashSet<T> {
             }
         }
         return -1;
+    }
+
+    public boolean contains(T element){
+        for (T t : array) {
+            if(t.equals(element)) return true;
+        }
+        return false;
     }
 
     private boolean validIndex(int index){
