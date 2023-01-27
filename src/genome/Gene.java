@@ -6,6 +6,10 @@ public class Gene {
         this.innovationNumber = innovationNumber;
     }
 
+    public Gene(){
+        
+    }
+
     public int getInnovationNumber() {
         return innovationNumber;
     }
