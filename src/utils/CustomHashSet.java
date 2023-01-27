@@ -56,9 +56,11 @@ public class CustomHashSet<T> {
         return -1;
     }
 
-    public boolean contains(T element){
-        for (T t : array) {
-            if(t.equals(element)) return true;
+    public boolean contains(T element) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(element)) {
+                return true;
+            }
         }
         return false;
     }
