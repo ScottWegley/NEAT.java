@@ -12,6 +12,10 @@ import src.genome.NodeGene.TYPE;
 public class Network {
     public static final int MAX_NODES = (int) Math.pow(2, 20);
 
+    private double C1 = 1;
+    private double C2 = 1;
+    private double C3 = 1;
+
     private int inputNodes, outputNodes, maxInstances;
 
     private HashMap<ConnectionGene, ConnectionGene> connectionDictionary = new HashMap<>();
@@ -58,7 +62,7 @@ public class Network {
         return n;
     }
 
-    public static ConnectionGene cloneConnectionGene(ConnectionGene con){
+    public ConnectionGene cloneConnectionGene(ConnectionGene con){
         ConnectionGene c = new ConnectionGene(con.getFrom(), con.getTo());
         c.setWeight(con.getWeight());
         c.setExpressed(con.isExpressed());
@@ -76,7 +80,7 @@ public class Network {
         return c;
     }
 
-    public src.genome.NodeGene getNode(int id) {
+    public NodeGene getNode(int id) {
         if (id <= nodeDictionary.size() && id > 0)
             return nodeDictionary.get(id - 1);
         return generateNode();
@@ -87,5 +91,17 @@ public class Network {
 
         Genome g = network.emptyGenome();
         System.out.println(g.getNodes().getSize());
+    }
+
+    public double getC1() {
+        return C1;
+    }
+
+    public double getC2() {
+        return C2;
+    }
+
+    public double getC3() {
+        return C3;
     }
 }
