@@ -2,7 +2,7 @@ package src.genome;
 
 import src.network.Network;
 
-public class ConnectionGene {
+public class ConnectionGene extends Gene{
     private NodeGene from, to;
 
     private double weight;
