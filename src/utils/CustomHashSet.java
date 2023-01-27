@@ -1,6 +1,16 @@
 package src.utils;
 
-public class CustomHashSet<T> {
+import java.util.Iterator;
+
+public class CustomHashSet<T> implements Iterable<T>{
+
+    @Override
+    public Iterator<T> iterator(){
+        return customIterator;
+    }
+
+    private CustomIterator<T> customIterator = new CustomIterator<T>(this);
+
     private T[] array = (T[]) new Object[1];
 
     private int size = 0;
@@ -77,4 +87,28 @@ public class CustomHashSet<T> {
     private boolean validIndex(int index) {
         return (index >= 0 && index < size);
     }
+}
+
+class CustomIterator<T> implements Iterator<T> {
+
+    int current;
+    CustomHashSet<T> data;
+
+    public CustomIterator(CustomHashSet<T> structure){
+        current = 0;
+        data = structure;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return (data.getSize() != 0 && current < data.getSize());
+    }
+
+    @Override
+    public T next() {
+        T toReturn = data.getElement(current);
+        current++;
+        return toReturn;
+    }
+
 }
