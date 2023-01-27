@@ -6,6 +6,7 @@ import java.util.HashMap;
 import src.genome.ConnectionGene;
 import src.genome.Genome;
 import src.genome.NodeGene;
+import src.genome.NodeGene.TYPE;
 
 
 public class Network {
@@ -40,12 +41,14 @@ public class Network {
             NodeGene n = generateNode();
             n.setX(0.1);
             n.setY((i+1)/(double)(this.inputNodes + 1));
+            n.setType(TYPE.INPUT);
         }
 
         for (int i = 0; i < this.outputNodes; i++) {
             NodeGene n = generateNode();
             n.setX(0.9);
             n.setY((i+1)/(double)(this.outputNodes + 1));
+            n.setType(TYPE.OUTPUT);
         }
     }
 
