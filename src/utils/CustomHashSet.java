@@ -1,6 +1,9 @@
 package utils;
 
 import java.util.Iterator;
+import java.util.Random;
+
+import genome.Gene;
 
 public class CustomHashSet<T> implements Iterable<T>{
 
@@ -12,6 +15,8 @@ public class CustomHashSet<T> implements Iterable<T>{
     private CustomIterator<T> customIterator = new CustomIterator<T>(this);
 
     private T[] array = (T[]) new Object[1];
+
+    Random r = new Random();
 
     private int size = 0;
 
@@ -28,6 +33,17 @@ public class CustomHashSet<T> implements Iterable<T>{
             }
             array = biggerArray;
         }
+    }
+
+    public void addSorted(Gene object){
+        for(int i = 0; i < this.getSize(); i++){
+            int innovation = ((Gene)getElement(i)).getInnovationNumber();
+            if(object.getInnovationNumber() < innovation){
+                add((T)object);
+                return;
+            }
+        }
+        add((T)object);
     }
 
     public void remove(int index) {
@@ -59,7 +75,7 @@ public class CustomHashSet<T> implements Iterable<T>{
     public T getRandomElement() {
         if (size == 0)
             return null;
-        return array[(int) Math.random() * size];
+        return array[r.nextInt(0,size)];
     }
 
     public int getIndex(T element) {
