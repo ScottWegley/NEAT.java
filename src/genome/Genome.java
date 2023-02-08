@@ -112,7 +112,7 @@ public class Genome {
             }
         }
 
-        while(indexG1 < g1.getConnections().getSize()){
+        while (indexG1 < g1.getConnections().getSize()) {
             ConnectionGene c1 = g1.getConnections().getElement(indexG1);
             genome.getConnections().add(g1.getNetwork().cloneConnectionGene(c1));
             indexG1++;
@@ -127,7 +127,92 @@ public class Genome {
     }
 
     public void mutate() {
+        if(network.getPROBABILITY_MUTATE_LINK() > Math.random()){
+            mutateLink();
+        }
+        if(network.getPROBABILITY_MUTATE_NODE() > Math.random()){
+            mutateNode();
+        }
+        if(network.getPROBABILITY_MUTATE_TOGGLE() > Math.random()){
+            mutateLinkToggle();
+        }
+        if(network.getPROBABILITY_MUTATE_WEIGHT_RANDOM() > Math.random()){
+            mutateWeightRandom();
+        }
+        if(network.getPROBABILITY_MUTATE_WEIGHT_SHIFT() > Math.random()){
+            mutateWeightShift();
+        }
+    }
 
+    public void mutateLink() {
+        for (int i = 0; i < 100; i++) {
+            
+            NodeGene a = nodes.getRandomElement();
+            NodeGene b = nodes.getRandomElement();
+            if (a.getX() == b.getX()) {
+                continue;
+            }
+            ConnectionGene con = new ConnectionGene((a.getX() < b.getX() ? a : b), (a.getX() < b.getX() ? b : a));
+
+            if (connections.contains(con)) {
+                continue;
+            }
+
+            con = network.generateConnectionGene(con.getFrom(), con.getTo());
+            con.setWeight((Math.random() * 2 - 1) * network.getWEIGHT_RANDOM_STRENGTH());
+
+            connections.addSorted(con);
+            return;
+        }
+    }
+
+    public void mutateNode() {
+        ConnectionGene con = connections.getRandomElement();
+        if (con == null) {
+            return;
+        }
+
+        NodeGene from = con.getFrom();
+        NodeGene to = con.getTo();
+
+        NodeGene middle = network.generateNode();
+        middle.setX((from.getX() + to.getX())/2);
+        middle.setY((from.getY() + to.getY())/2 + Math.random() * 0.1 - 0.05);
+
+        ConnectionGene con1 = network.generateConnectionGene(from, middle);
+        ConnectionGene con2 = network.generateConnectionGene(middle, to);
+        con1.setWeight(1);
+        con2.setWeight(con.getWeight());
+        con2.setExpressed(con.isExpressed());
+
+        connections.remove(con);
+
+        connections.add(con1);
+        connections.add(con2);
+
+        nodes.add(middle);
+
+    }
+
+    public void mutateWeightShift() {
+        ConnectionGene con = connections.getRandomElement();
+        if (con != null) {
+            con.setWeight(con.getWeight() + (Math.random() * 2 - 1) * network.getWEIGHT_RANDOM_STRENGTH());
+        }
+    }
+
+    public void mutateWeightRandom() {
+        ConnectionGene con = connections.getRandomElement();
+        if (con != null) {
+            con.setWeight((Math.random() * 2 - 1) * network.getWEIGHT_RANDOM_STRENGTH());
+        }
+    }
+
+    public void mutateLinkToggle() {
+        ConnectionGene con = connections.getRandomElement();
+        if (con != null) {
+            con.setExpressed(!con.isExpressed());
+        }
     }
 
     public CustomHashSet<ConnectionGene> getConnections() {
