@@ -1,15 +1,11 @@
 package visual;
 
-//import calculations.Calculator;
-
-import javax.swing.*;
-
 import genome.Genome;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class Frame extends JFrame {
 
@@ -59,7 +55,7 @@ public class Frame extends JFrame {
         buttonB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genome.mutate_weight_random();
+                genome.mutateWeightRandom();
                 repaint();
             }
         });
@@ -69,7 +65,7 @@ public class Frame extends JFrame {
         buttonZ.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genome.mutate_weight_shift();
+                genome.mutateWeightShift();
                 repaint();
             }
         });
@@ -79,7 +75,7 @@ public class Frame extends JFrame {
         buttonC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genome.mutate_link();
+                genome.mutateLink();
                 repaint();
             }
         });
@@ -89,7 +85,7 @@ public class Frame extends JFrame {
         buttonD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genome.mutate_node();
+                genome.mutateNode();
                 repaint();
             }
         });
@@ -101,7 +97,7 @@ public class Frame extends JFrame {
         buttonE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                genome.mutate_link_toggle();
+                genome.mutateLinkToggle();
                 repaint();
             }
         });
@@ -121,8 +117,8 @@ public class Frame extends JFrame {
         buttonG.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Calculator c = new Calculator(genome);
-                System.out.println(Arrays.toString(c.calculate(1,1,1,1,1,1,1,1,1,1)));
+                //genome.generateCalculator();
+                //System.out.println(Arrays.toString(genome.calculate(1,1,1)));
                 repaint();
             }
         });
