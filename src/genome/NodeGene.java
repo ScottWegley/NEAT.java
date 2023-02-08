@@ -1,4 +1,4 @@
-package src.genome;
+package genome;
 
 public class NodeGene extends Gene{
 

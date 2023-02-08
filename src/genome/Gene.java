@@ -1,4 +1,4 @@
-package src.genome;
+package genome;
 public class Gene {
     protected int innovationNumber;
 

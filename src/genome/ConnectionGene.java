@@ -1,6 +1,6 @@
-package src.genome;
+package genome;
 
-import src.network.Network;
+import network.Network;
 
 public class ConnectionGene extends Gene{
     private NodeGene from, to;

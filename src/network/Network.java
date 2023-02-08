@@ -1,12 +1,12 @@
-package src.network;
+package network;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import src.genome.ConnectionGene;
-import src.genome.Genome;
-import src.genome.NodeGene;
-import src.genome.NodeGene.TYPE;
+import genome.ConnectionGene;
+import genome.Genome;
+import genome.NodeGene;
+import genome.NodeGene.TYPE;
 
 
 public class Network {

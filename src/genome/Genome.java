@@ -1,7 +1,7 @@
-package src.genome;
+package genome;
 
-import src.network.Network;
-import src.utils.CustomHashSet;
+import network.Network;
+import utils.CustomHashSet;
 
 public class Genome {
     private CustomHashSet<ConnectionGene> connections = new CustomHashSet<>();
