@@ -7,6 +7,7 @@ import genome.ConnectionGene;
 import genome.Genome;
 import genome.NodeGene;
 import genome.NodeGene.TYPE;
+import visual.Frame;
 
 
 public class Network {
@@ -15,6 +16,15 @@ public class Network {
     private double C1 = 1;
     private double C2 = 1;
     private double C3 = 1;
+
+    private double WEIGHT_SHIFT_STRENGTH = 0.3;
+    private double WEIGHT_RANDOM_STRENGTH = 0.1;
+
+    private double PROBABILITY_MUTATE_LINK = 0.4;
+    private double PROBABILITY_MUTATE_NODE = 0.4;
+    private double PROBABILITY_MUTATE_WEIGHT_SHIFT = 0.4;
+    private double PROBABILITY_MUTATE_WEIGHT_RANDOM = 0.4;
+    private double PROBABILITY_MUTATE_TOGGLE = 0.4;
 
     private int inputNodes, outputNodes, maxInstances;
 
@@ -87,10 +97,10 @@ public class Network {
     }
 
     public static void main(String[] args) {
-        Network network = new Network(3, 3, 100);
+        Network network = new Network(2, 2, 100);
 
         Genome g = network.emptyGenome();
-        System.out.println(g.getNodes().getSize());
+        new Frame(g);
     }
 
     public double getC1() {
@@ -103,5 +113,32 @@ public class Network {
 
     public double getC3() {
         return C3;
+    }
+
+    public double getWEIGHT_SHIFT_STRENGTH() {
+        return WEIGHT_SHIFT_STRENGTH;
+    }
+    public double getWEIGHT_RANDOM_STRENGTH() {
+        return WEIGHT_RANDOM_STRENGTH;
+    }
+
+    public double getPROBABILITY_MUTATE_LINK() {
+        return PROBABILITY_MUTATE_LINK;
+    }
+
+    public double getPROBABILITY_MUTATE_NODE() {
+        return PROBABILITY_MUTATE_NODE;
+    }
+
+    public double getPROBABILITY_MUTATE_WEIGHT_SHIFT() {
+        return PROBABILITY_MUTATE_WEIGHT_SHIFT;
+    }
+
+    public double getPROBABILITY_MUTATE_WEIGHT_RANDOM() {
+        return PROBABILITY_MUTATE_WEIGHT_RANDOM;
+    }
+
+    public double getPROBABILITY_MUTATE_TOGGLE() {
+        return PROBABILITY_MUTATE_TOGGLE;
     }
 }
